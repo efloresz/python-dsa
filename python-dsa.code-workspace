@@ -1,0 +1,48 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "always",
+      "source.organizeImports": "always"
+    },
+    "ruff.showNotifications": "always",
+    "ruff.lint.run": "onSave",
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "pytest: Current File",
+        "type": "debugpy",
+        "request": "launch",
+        "module": "pytest",
+        "console": "integratedTerminal",
+        "args": ["${file}"],
+        "justMyCode": false
+      }
+    ],
+    "compounds": []
+  },
+  "extensions": {
+    "recommendations": [
+      "mhutchie.git-graph",
+      "donjayamanne.git-extension-pack",
+      "eamodio.gitlens",
+      "ms-python.vscode-pylance",
+      "streetsidesoftware.code-spell-checker",
+      "ms-toolsai.jupyter",
+      "ms-python.python",
+      "ms-python.debugpy",
+      "donjayamanne.python-environment-manager",
+      "charliermarsh.ruff",
+      "ms-python.mypy-type-checker",
+      "waderyan.gitblame",
+      "tamasfe.even-better-toml"
+    ]
+  }
+}
