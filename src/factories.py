@@ -11,9 +11,10 @@ from dataclasses import dataclass
 from typing import Any, Iterable, TypeVar
 
 import factory as fact
-import models
 import petname
 from factory import fuzzy
+
+import models
 
 T = TypeVar('T')
 
@@ -111,7 +112,18 @@ class AppointmentFactory(fact.Factory):
     start = fact.LazyAttribute(lambda o: models.round(o._start))
 
 
-def create_random_appointments(obj, n: int, person: models.Person) -> list[models.Appointment]:
+@dataclass
+class Dataset:
+    appointments: list[models.Appointment]
+    cats: list[models.Cat]
+    clinics: list[models.Clinic]
+    persons: list[models.Person]
+    veterinarians: list[models.Veterinarian]
+
+
+def create_random_appointments(
+    obj: Dataset, n: int, person: models.Person
+) -> list[models.Appointment]:
     clinic = random.choice(obj.clinics)
     veterinarian = random.choice(clinic.veterinarians)
     return [
@@ -123,15 +135,6 @@ def create_random_appointments(obj, n: int, person: models.Person) -> list[model
         )
         for _ in range(n)
     ]
-
-
-@dataclass
-class Dataset:
-    appointments: list[models.Appointment]
-    cats: list[models.Cat]
-    clinics: list[models.Clinic]
-    persons: list[models.Person]
-    veterinarians: list[models.Veterinarian]
 
 
 class TestDatasetFactory(fact.Factory):

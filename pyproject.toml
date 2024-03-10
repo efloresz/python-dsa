@@ -2,21 +2,32 @@
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.mypy]
+exclude = "src/factories.py"
+pretty = true
+show_error_context = true
+show_error_codes = true
+strict = true
+warn_unused_ignores = true
+
 [tool.poetry]
 authors = ["Bryant Finney <bryant.finney@outlook.com>"]
 description = "An example of a real-world DS&A problem"
 name = "python-dsa"
-packages = [{ include = "*.py", from = "src" }]
+packages = [{ include = "*.py", from = "src" }, { include = "src/py.typed" }]
 readme = "README.md"
 version = "0.1.0"
 
 [tool.poetry.dependencies]
 python = "^3.8"
 ipykernel = "^6.29.3"
+typing-extensions = { version = "^4.10.0" }
 
 [tool.poetry.group.dev.dependencies]
 factory-boy = "^3.3.0"
 petname = "^2.6"
+mypy = "^1.9.0"
+ruff = "^0.3.2"
 
 [tool.pyright]
 ignore = ["src/factories.py"]
@@ -29,6 +40,9 @@ show-source = true
 
 [tool.ruff.format]
 quote-style = "single"
+
+[tool.ruff.isort]
+known-first-party = ["db", "factories", "models"]
 
 [tool.ruff.lint]
 select = [

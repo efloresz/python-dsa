@@ -36,7 +36,7 @@ class Connection:
             for a in self.select('appointments', veterinarian_id=veterinarian.id)
         ]
 
-    def get_cat(self, id: models.CatId) -> models.Cat:
+    def get_cat(self, id: str) -> models.Cat:
         """Return the cat with the given ID."""
         cat = self.select('cats', id=id)[0]
         return models.Cat(**cat)

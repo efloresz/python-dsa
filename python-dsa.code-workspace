@@ -9,9 +9,20 @@
       "source.fixAll": "always",
       "source.organizeImports": "always"
     },
-    "ruff.showNotifications": "always",
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "mypy-type-checker.args": ["--config-file=pyproject.toml", "--show-error-codes"],
+    "mypy-type-checker.importStrategy": "fromEnvironment",
+    "mypy-type-checker.interpreter": [],
+    "mypy-type-checker.preferDaemon": true,
+    "mypy-type-checker.reportingScope": "workspace",
+    "python.analysis.autoFormatStrings": true,
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.typeCheckingMode": "strict",
+    "python.defaultInterpreterPath": "python3",
     "ruff.lint.run": "onSave",
-    "editor.defaultFormatter": "charliermarsh.ruff"
+    "ruff.showNotifications": "always"
   },
   "launch": {
     "version": "0.2.0",
