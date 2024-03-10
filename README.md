@@ -85,3 +85,13 @@ poetry install
 # to activate the virtual environment, run...
 poetry shell
 ```
+
+### Using with [VSCode](https://code.visualstudio.com/)
+
+This project is set up to work with [VSCode](https://code.visualstudio.com/). Just run the following command to launch the project:
+
+```sh
+code python-dsa.code-workspace
+```
+
+When the editor opens, press `⌘ + ⇧ + x` (mac) / `ctrl + shift + x` (windows) to open the extensions view and search `@recommended` to list extensions recommended for this project.
