@@ -37,3 +37,23 @@ What are N + 1 Queries?
                 selected.append(rec)
 
         return selected
+
+# Second fix - Removing the 'all' loop 
+ def get_cats_seen_at(self, clinic_name: str) -> list[models.Cat]:
+        """Return all cats seen at the given clinic."""
+        clinic = self.get_clinic(clinic_name)
+        all_appointments = self.select('appoitment', clinic_id-clinic.id)
+
+        all_cats: list[models.Cat] = []
+        for appointment in all_appointments:
+         # Wrong - getting all the appointments
+            cat = self.get_cat(appointment.cat_id)
+            if cat not in all_cats:
+                all_cats.append(cat)
+
+        return all_cats
+
+# Third -> veternarian should not have a for loop too many queries
+ def get_veterinarians(self, clinic: models.Clinic) -> list[models.Veterinarian]:
+        """Return all veterinarians working at the given clinic."""
+        return [models.Veterinarian(**v) for v in self.select('veterinarians', clinic_id=clinic.id)]
