@@ -53,17 +53,5 @@ class Connection:
     def get_cats_seen_at(self, clinic_name: str) -> list[models.Cat]:
         """Return all cats seen at the given clinic."""
         clinic = self.get_clinic(clinic_name)
-        veterinarians = self.get_veterinarians(clinic)
-        all_appointments = [
-            appointment
-            for veterinarian in veterinarians
-            for appointment in self.get_appointments(veterinarian)
-        ]
-
-        all_cats: list[models.Cat] = []
-        for appointment in all_appointments:
-            cat = self.get_cat(appointment.cat_id)
-            if cat not in all_cats:
-                all_cats.append(cat)
-
+        all_cats = self.select('cats', clinic=clinic.id)
         return all_cats
